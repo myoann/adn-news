@@ -7,8 +7,8 @@ function ajaxPOST(_data,_messageSuccess,_redirection){
         type: 'POST',
         url: _url_DB,
         data:_data,
-        success:function(data){
-            console.log(_messageSuccess);
+        success:function(){
+            alert(_messageSuccess);
         }
     })
 }
@@ -143,7 +143,7 @@ function init() {
     $("button#likeArticle").unbind("click").bind("click", function () {
         // get the data of the article liked
         var _NewsId = $.trim($("#likeArticle").val());
-        
+
         // if it exists and is not null
         if (_NewsId) {
             var _data = {

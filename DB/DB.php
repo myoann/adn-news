@@ -69,6 +69,8 @@
         //Récupérer toutes les données retournées
         $resultJSON=$stmt->fetchAll(PDO::FETCH_ASSOC);
 
+        $resultJSON['NbLines'] = sizeof($resultJSON);
+
         echo json_encode($resultJSON);
     }
 
