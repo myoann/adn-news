@@ -89,7 +89,7 @@
     }
 
     function getNews(){
-        $sql = 'SELECT * FROM news ORDER BY Posted_Time';
+        $sql = 'SELECT * FROM news ORDER BY Posted_Time DESC';
         $stmt =  connexion()->prepare($sql);
         $stmt->setFetchMode(PDO::FETCH_OBJ);
 

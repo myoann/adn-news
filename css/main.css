@@ -323,6 +323,10 @@ body:before {
     height: 100%;
 }
 
+#displayASpecificNewsController {
+    background-image: url('http://bgfons.com/upload/newspaper_texture2847.jpg');
+}
+
 #video {
     z-index: -99;
     position: fixed;

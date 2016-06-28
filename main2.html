@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Adneom News</title>
+    <!-- IMPORT CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <!-- IMPORT JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="js/main2.js"></script>
+</head>
+<body>
+    <div ng-app="adnNews">
+        <div ng-controller="displayAllNewsController">
+            <section id="home">
+                    <div class='card_news' ng-repeat="x in newsList">
+                        <a ng-href="./news_page.php?action=getNewsById&news_id={{ x.News_Id }}">
+                            <span class='card_nb_likes'>{{ x.Nb_Likes }}<i class="fa fa-thumbs-up"></i></span>
+                            <img class='card_img card_bg_img' ng-src="{{ x.Image }}" />
+                            <span class='card_title'>{{ x.Title }}</span>
+                        </a>
+                    </div>
+                <a id="bt_add_news" title="Add a news" class="fa fa-plus" href="addnews.php"></a>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

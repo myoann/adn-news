@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Adneom News</title>
+    <!-- IMPORT CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <!-- IMPORT JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="js/main2.js"></script>
+</head>
+<body>
+<div ng-app="adnNews">
+    <div ng-controller="displayASpecificNewsController" class="displayASpecificNewsController">
+        <div class="card-deck-wrapper">
+            <div class="card-deck" style="margin-left:auto; margin-right:auto;">
+                <div class="card" style="width:500px;">
+                    <img class="card-img-top" ng-src="{{ newsDisplay[0].Image }}" alt="Card image cap" width="500px" height="425px">
+                    <div class="card-block" style="text-align: center;">
+                        <h4 class="card-title">{{ newsDisplay[0].Title }}</h4>
+                        <p class="card-text" style="text-align: justify;">{{ newsDisplay[0].Description }}</p>
+                        <hr size="75%"/>
+                        <button id="likeArticle" name="likeArticle" type="button" class="btn btn-primary" value="{{ _news_id }}" >Click to Like this article</button><br/>
+                        <p class="card-likes">{{ newsDisplay[0].Nb_Likes }} <i class="fa fa-thumbs-up"></i></p>
+                        <p class="source" style="text-align: right; text-decoration:none; color:grey;"><a class="url-source" ng-href="{{ newsDisplay[0].Link }}" target="_blank">source</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='card' ng-repeat="x in newsDisplay" style='width:500px; margin-left:auto; margin-right:auto;'>
+            <div class='card-header'>{{ x.Comment_Username }}</div>
+            <div class='card-block'>
+                <blockquote class='card-blockquote'>
+                    <p>{{ x.Comment_Message }}</p>
+                    <footer><small>{{ x.Comment_Date }}</small></footer>
+                </blockquote>
+            </div>
+        </div>
+
+
+        <div class="addNewComment">
+            <div class="addNewComment-triangle"></div>
+
+            <h2 class="addNewComment-header">Add a comment</h2>
+
+            <form class="addNewComment-container">
+                <p><input id="comment_username" class="comment_username" type="text" placeholder="Your name"></p>
+                <p><textarea id="comment_message" class="comment_message" type="text" placeholder="Your comment"></textarea></p>
+                <p><button id="addComment" class="addComment" value="<?= $theNews_id ?>">SEND</button></p>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
