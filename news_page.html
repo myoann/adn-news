@@ -12,9 +12,9 @@
     <!-- IMPORT JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script type="text/javascript" src="js/main2.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 </head>
-<body>
+<body style="background-image: url('./images/newspaper_texture.jpg');">
 <div ng-app="adnNews">
     <div ng-controller="displayASpecificNewsController" class="displayASpecificNewsController">
         <div class="card-deck-wrapper">
@@ -25,7 +25,7 @@
                         <h4 class="card-title">{{ newsDisplay[0].Title }}</h4>
                         <p class="card-text" style="text-align: justify;">{{ newsDisplay[0].Description }}</p>
                         <hr size="75%"/>
-                        <button id="likeArticle" name="likeArticle" type="button" class="btn btn-primary" value="{{ _news_id }}" >Click to Like this article</button><br/>
+                        <button id="likeArticle" name="likeArticle" type="button" class="btn btn-primary" ng-click="likeArticle()">Click to Like this article</button><br/>
                         <p class="card-likes">{{ newsDisplay[0].Nb_Likes }} <i class="fa fa-thumbs-up"></i></p>
                         <p class="source" style="text-align: right; text-decoration:none; color:grey;"><a class="url-source" ng-href="{{ newsDisplay[0].Link }}" target="_blank">source</a></p>
                     </div>
@@ -33,28 +33,26 @@
             </div>
         </div>
 
-        <div class='card' ng-repeat="x in newsDisplay" style='width:500px; margin-left:auto; margin-right:auto;'>
-            <div class='card-header'>{{ x.Comment_Username }}</div>
-            <div class='card-block'>
-                <blockquote class='card-blockquote'>
-                    <p>{{ x.Comment_Message }}</p>
-                    <footer><small>{{ x.Comment_Date }}</small></footer>
-                </blockquote>
-            </div>
+        <div class='card' ng-repeat="x in newsDisplay" ng-if="x.Comment_Username!=null" style='width:500px; margin-left:auto; margin-right:auto;'>
+                <div class='card-header'>{{ x.Comment_Username }}</div>
+                <div class='card-block'>
+                    <blockquote class='card-blockquote'>
+                        <p>{{ x.Comment_Message }}</p>
+                        <footer><small>{{ x.Comment_Date }}</small></footer>
+                    </blockquote>
+                </div>
         </div>
+    </div>
+    <div ng-controller="postACommentController" class="addNewComment">
+        <div class="addNewComment-triangle"></div>
 
+        <h2 class="addNewComment-header">Add a comment</h2>
 
-        <div class="addNewComment">
-            <div class="addNewComment-triangle"></div>
-
-            <h2 class="addNewComment-header">Add a comment</h2>
-
-            <form class="addNewComment-container">
-                <p><input id="comment_username" class="comment_username" type="text" placeholder="Your name"></p>
-                <p><textarea id="comment_message" class="comment_message" type="text" placeholder="Your comment"></textarea></p>
-                <p><button id="addComment" class="addComment" value="<?= $theNews_id ?>">SEND</button></p>
-            </form>
-        </div>
+        <form class="addNewComment-container" ng-submit="submitComment()">
+            <p><input id="comment_username" class="comment_username" ng-model="username" type="text" placeholder="Your name"></p>
+            <p><textarea id="comment_message" class="comment_message" ng-model="commentMessage" type="text" placeholder="Your comment"></textarea></p>
+            <p><button id="addComment" class="addComment">SEND</button></p>
+        </form>
     </div>
 </div>
 </body>

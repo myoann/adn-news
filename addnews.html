@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Adneom News</title>
+    <!-- IMPORT CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <!-- IMPORT JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</head>
+<body style="background-image: url('./images/blur-background_1.jpg');">
+<div ng-app="adnNews">
+    <div ng-controller="postANewsController" class="postANewsController">
+        <div class="form" style="margin-top:150px;">
+            <form class="form-horizontal" role="form" ng-submit="submitForm()">
+
+                <!-- Title input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="title"></label>
+                    <div class="col-md-4">
+                        <input id="title" name="title" ng-model="title" type="text" placeholder="Title" class="form-control input-md">
+
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <br/>
+                <!-- Image Link input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="imagelink"></label>
+                    <div class="col-md-4">
+                        <input id="imagelink" name="imagelink" ng-model="imagelink" type="text" placeholder="Image's URL" class="form-control input-md">
+
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <br/>
+                <!-- Description input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="description"></label>
+                    <div class="col-md-4">
+                        <input id="description" name="description" ng-model="description" type="text" placeholder="Description" class="form-control input-md" required="">
+
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <br/>
+                <!-- Link input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="link"></label>
+                    <div class="col-md-4">
+                        <input id="link" name="link" ng-model="link" type="text" placeholder="Link" class="form-control input-md" required="">
+
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <br/>
+                <!-- Button -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="addnews"></label>
+                    <div class="col-md-4">
+                        <button id="addnews" name="addnews" class="btn btn-primary" style="width:100%; margin-left:auto; margin-right:auto;">Add a news</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

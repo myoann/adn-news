@@ -128,7 +128,7 @@
         switch ($action) {
             // -- Adding a new comment
             case "addNewComment":
-                addNewComment($dbh, $_POST['Username'], $_POST['CommentMessage'], $_POST['NewsId']);
+                addNewComment($dbh, $_GET['Username'], $_GET['CommentMessage'], $_GET['NewsId']);
                 break;
             // -- Adding a new user
             case "addNewUser":
@@ -136,18 +136,13 @@
                 break;
             // -- Adding a new news
             case "addNewNews":
-                addNewNews($dbh, $_POST['Title'], $_POST['ImageLink'], $_POST['Description'], $_POST['Link']);
+                addNewNews($dbh, $_GET['Title'], $_GET['ImageLink'], $_GET['Description'], $_GET['Link']);
                 break;
             case "getNews":
                 getNews();
                 break;
             case "getNewsById":
                 getNewsById($_GET['news_id']);
-                break;
-            case "getNewsByTitle":
-                if (isset($_GET['title_news'])){
-                    getMealByTitle($_GET['title_news']);
-                }
                 break;
             case "getUser":
                 getUser($_GET['user_Id']);
@@ -156,7 +151,7 @@
                 verifyLoginUser($dbh, $_POST['Email'], $_POST['Password']);
                 break;
             case "updateNbLikes":
-                updateNbLikes($dbh, $_POST['NewsId']);
+                updateNbLikes($dbh, $_GET['news_id']);
                 break;
         }
     }
